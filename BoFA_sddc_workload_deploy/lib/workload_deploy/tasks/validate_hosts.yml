@@ -1,0 +1,27 @@
+---
+- name: Commission Hosts
+  uri:
+    validate_certs: False
+    url: "https://{{ sddc_fqdn }}/v1/hosts/validations"
+    method: POST
+    src: host.json
+    return_content: yes
+    status_code: [201, 202, 400, 404, 405]
+    headers:
+      Authorization: "Bearer {{ sddc_session_token }}"
+      Content-Type: "application/json"
+  register: sddc_validate_hosts
+
+- name: Add hosts
+  debug:
+    msg: "{{ sddc_validate_hosts.json }}"
+
+
+- name: Set validate Id token
+  set_fact:
+#    sddc_valudate_id: "{{ sddc_validate_hosts.json.id | replace(" ","") }}"
+    sddc_valudate_id: "{{ sddc_validate_hosts.json.id | regex_replace('^\\/|\\/$', '')  }}"
+
+
+
+...

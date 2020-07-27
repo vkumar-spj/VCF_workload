@@ -1,0 +1,7 @@
+---
+
+sddc_fqdn: sddc01.sfo01.rainpole.local
+sddc_admin_username: administrator@vsphere.local
+sddc_admin_password: VMware1!
+
+# vars file for workload_deploy

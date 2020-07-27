@@ -1,0 +1,32 @@
+[ 
+	{
+	  "fqdn" : "esxi05.sfo01.rainpole.local",
+	  "username" : "root",
+	  "password" : "VMware1!",
+	  "storageType" : "VSAN",
+	  "networkPoolId" : "9457c6bb-b428-450b-b36e-b08bee957348"
+	},
+
+	{
+	  "fqdn" : "esxi06.sfo01.rainpole.local",
+	  "username" : "root",
+	  "password" : "VMware1!",
+	  "storageType" : "VSAN",
+	  "networkPoolId" : "9457c6bb-b428-450b-b36e-b08bee957348"
+	},
+	{
+	  "fqdn" : "esxi07.sfo01.rainpole.local",
+	  "username" : "root",
+	  "password" : "VMware1!",
+	  "storageType" : "VSAN",
+	  "networkPoolId" : "9457c6bb-b428-450b-b36e-b08bee957348"
+	},
+	{
+	  "fqdn" : "esxi08.sfo01.rainpole.local",
+	  "username" : "root",
+	  "password" : "VMware1!",
+	  "storageType" : "VSAN",
+	  "networkPoolId" : "9457c6bb-b428-450b-b36e-b08bee957348"
+	}
+
+ ]

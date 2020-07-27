@@ -1,0 +1,16 @@
+---
+- name: Create Network Pools
+  uri:
+    validate_certs: False
+    url: "https://{{ sddc_fqdn }}/v1/network-pools"
+    method: POST
+    src: sfo01-v01-clst01.json
+    return_content: yes
+    status_code: [201, 400]
+    headers:
+      Authorization: "Bearer {{ sddc_session_token }}"
+      Content-Type: "application/json"
+  register: sddc_token_results
+
+
+...

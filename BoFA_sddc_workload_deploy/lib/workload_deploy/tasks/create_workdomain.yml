@@ -1,0 +1,23 @@
+---
+- name: Create WorkDomain based on validation results
+  uri:
+    validate_certs: False
+    url: "https://{{ sddc_fqdn }}/v1/domains"
+    method: POST
+    src: sfo01-w01-domain.json
+    return_content: yes
+    status_code: [200, 202, 400]
+    headers:
+      Authorization: "Bearer {{ sddc_session_token }}"
+      Content-Type: "application/json"
+  register: sddc_domain_create
+
+- name: Domain creation status
+  debug:
+    msg: "{{ sddc_domain_create.json }}"
+
+
+- name: Domain creation ID
+  debug:
+    msg: "{{ sddc_domain_create.json.id }}"
+

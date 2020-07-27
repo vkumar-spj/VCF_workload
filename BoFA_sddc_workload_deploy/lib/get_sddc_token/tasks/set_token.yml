@@ -1,0 +1,13 @@
+---
+
+- name: Set SDDC API Token Variable
+  set_fact:
+    sddc_api_token: "{{ sddc_token_results.json.refreshToken.id }}"
+    sddc_session_token: "{{ sddc_token_results.json.accessToken}}"
+
+- debug:
+    msg: SDDC API Token is  {{ sddc_api_token }}
+
+- debug:
+    msg: SDDC Session Token is  {{ sddc_session_token }}
+...

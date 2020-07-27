@@ -1,0 +1,12 @@
+---
+# tasks file for workload_deploy
+
+- name: Get SDDC Token
+  import_tasks: get_token.yml
+  tags: [ token, domain ]
+    
+
+- name: Set SDDC Token Facts
+  import_tasks: set_token.yml
+  tags: [ token, domain ]
+

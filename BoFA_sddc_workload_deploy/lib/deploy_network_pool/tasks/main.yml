@@ -1,0 +1,13 @@
+---
+# tasks file for workload_deploy
+
+
+- name: Get Network Pools
+  import_tasks: get_network_pools.yml
+
+- name: Create Network Pools
+  import_tasks: create_network_pools.yml
+
+- name: Get Network Pools details
+  import_tasks: get_network_details.yml
+

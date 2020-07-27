@@ -1,0 +1,57 @@
+---
+# tasks file for workload_deploy
+
+- name: Get SDDC Token
+  import_tasks: get_token.yml
+  tags: [ token, domain ]
+    
+
+- name: Set SDDC Token Facts
+  import_tasks: set_token.yml
+  tags: [ token, domain ]
+
+- name: Get Network Pools
+  import_tasks: get_network_pools.yml
+
+- name: Create Network Pools
+  import_tasks: create_network_pools.yml
+
+- name: Get Network Pools details
+  import_tasks: get_network_details.yml
+
+- name: Get Hosts
+  import_tasks: get_hosts.yml
+
+- name: Validate Hosts
+  import_tasks: validate_hosts.yml
+
+- name: Sleep for 300 seconds and continue with play
+  wait_for:
+    delay: 45
+    timeout: 0
+
+- name:  Validation results
+  import_tasks: check_validation_host_status.yml
+
+- name: Comission hosts, this will take 2-5 minutes, sleeping .....
+  import_tasks: add_hosts.yml
+
+
+- name: Sleep for 300 seconds and continue with play
+  wait_for:
+    delay: 45
+    timeout: 0
+
+- name: Get all host and their IDs, use these IDs in work load domain 
+  import_tasks: get_hosts.yml
+
+#- name: Validate Domain JSON input file
+#  import_tasks: validate_workdomain.yml
+#  tags: token
+#
+#- name: Create domain if validation results are successful
+#  import_tasks: create_workdomain.yml
+#  when: "'SUCCEEDED' in {{ sddc_validation_final_result }}"
+#  tags: token
+
+

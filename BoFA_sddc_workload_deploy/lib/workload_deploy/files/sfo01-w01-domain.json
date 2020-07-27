@@ -1,0 +1,162 @@
+{
+  "domainName" : "sfo01-w01",
+  "vcenterSpec" : {
+    "name" : "vc02",
+    "licenseKey" : "HG6TU-6T2EP-H89U0-0TA5H-120NF",
+    "networkDetailsSpec" : {
+      "ipAddress" : "172.17.101.31",
+      "dnsName" : "vc02.sfo01.rainpole.local",
+      "gateway" : "172.17.101.253",
+      "subnetMask" : "255.255.255.0"
+    },
+    "rootPassword" : "VMware1!",
+    "datacenterName" : "sfo01-dc01",
+    "vmSize" : "tiny",
+    "storageSize" : "lstorage"
+  },
+  "computeSpec" : {
+    "clusterSpecs" : [ {
+      "name" : "sfo01-w01-clst01",
+      "hostSpecs" : [ {
+        "id" :  "4833c1e7-b5ee-49a3-82e3-80fbb75423c0",
+        "username" : "root",
+        "licenseKey" : "RJ60P-MT28L-08AG9-0JCHP-9X84J",
+        "hostNetworkSpec" : {
+          "vmNics" : [ {
+            "id" : "vmnic0",
+            "vdsName" : "SDDC-Dswitch-Private1"
+          }, {
+            "id" : "vmnic1",
+            "vdsName" : "SDDC-Dswitch-Private1"
+          }, {
+            "id" : "vmnic2",
+            "vdsName" : "SDDC-Dswitch-Private2-Converged"
+          }, {
+            "id" : "vmnic3",
+            "vdsName" : "SDDC-Dswitch-Private2-Converged"
+          } ]
+        }
+      }, {
+        "id" :  "42990a57-d8ae-42ad-bf38-dc6daa76cfe8",
+        "licenseKey" : "RJ60P-MT28L-08AG9-0JCHP-9X84J",
+        "username" : "root",
+        "hostNetworkSpec" : {
+          "vmNics" : [ {
+            "id" : "vmnic0",
+            "vdsName" : "SDDC-Dswitch-Private1"
+          }, {
+            "id" : "vmnic1",
+            "vdsName" : "SDDC-Dswitch-Private1"
+          }, {
+            "id" : "vmnic2",
+            "vdsName" : "SDDC-Dswitch-Private2-Converged"
+          }, {
+            "id" : "vmnic3",
+            "vdsName" : "SDDC-Dswitch-Private2-Converged"
+          } ]
+        }
+      }, {
+        "id" :  "73448786-7387-4b19-a418-63d84f6eb499",
+        "licenseKey" : "RJ60P-MT28L-08AG9-0JCHP-9X84J",
+        "username" : "root",
+        "hostNetworkSpec" : {
+          "vmNics" : [ {
+            "id" : "vmnic0",
+            "vdsName" : "SDDC-Dswitch-Private1"
+          }, {
+            "id" : "vmnic1",
+            "vdsName" : "SDDC-Dswitch-Private1"
+          }, {
+            "id" : "vmnic2",
+            "vdsName" : "SDDC-Dswitch-Private2-Converged"
+          }, {
+            "id" : "vmnic3",
+            "vdsName" : "SDDC-Dswitch-Private2-Converged"
+          } ]
+        }
+      }, {
+        "id" : "95569416-6027-4c07-9066-d0e14f649405",
+        "licenseKey" : "RJ60P-MT28L-08AG9-0JCHP-9X84J",
+        "username" : "root",
+        "hostNetworkSpec" : {
+          "vmNics" : [ {
+            "id" : "vmnic0",
+            "vdsName" : "SDDC-Dswitch-Private1"
+          }, {
+            "id" : "vmnic1",
+            "vdsName" : "SDDC-Dswitch-Private1"
+          }, {
+            "id" : "vmnic2",
+            "vdsName" : "SDDC-Dswitch-Private2-Converged"
+          }, {
+            "id" : "vmnic3",
+            "vdsName" : "SDDC-Dswitch-Private2-Converged"
+          } ]
+        }
+      } ],
+      "datastoreSpec" : {
+        "vsanDatastoreSpec" : {
+          "failuresToTolerate" : 1,
+          "licenseKey" : "EN28J-H4K9K-48VH9-0H9RP-31TLJ",
+          "vsanDedup": "true",
+          "datastoreName" : "sfo-w01-clst01-vsan01"
+        }
+      },
+      "networkSpec" : {
+        "vdsSpecs" : [ {
+          "name" : "SDDC-Dswitch-Private1",
+          "portGroupSpecs" : [ {
+            "name" : "SDDC-DPortGroup-Mgmt",
+            "transportType" : "MANAGEMENT"
+          }, {
+            "name" : "SDDC-DPortGroup-VSAN",
+            "transportType" : "VSAN"
+          }, {
+            "name" : "SDDC-DPortGroup-vMotion",
+            "transportType" : "VMOTION"
+          } ]
+        }, {
+          "name" : "SDDC-Dswitch-Private2-Converged",
+          "isUsedByNsxt" : true
+        } ],
+        "nsxClusterSpec" : {
+          "nsxTClusterSpec" : {
+            "geneveVlanId" : 1104
+          }
+        }
+      }
+    } ]
+  },
+  "nsxTSpec" : {
+    "nsxManagerSpecs" : [ {
+      "name" : "nsx02a",
+      "networkDetailsSpec" : {
+        "ipAddress" : "172.17.101.27",
+        "dnsName" : "nsx02a.sfo01.rainpole.local",
+        "gateway" : "172.17.101.253",
+        "subnetMask" : "255.255.255.0"
+        }
+      }, {
+      "name" : "nsx2b",
+      "networkDetailsSpec" : {
+        "ipAddress" : "172.17.101.28",
+        "dnsName" : "nsx2b.sfo01.rainpole.local",
+        "gateway" : "172.17.101.253",
+        "subnetMask" : "255.255.255.0"
+        }
+      }, {
+      "name" : "nsx02c",
+      "networkDetailsSpec" : {
+        "ipAddress" : "172.17.101.29",
+        "dnsName" : "nsx02c.sfo01.rainpole.local",
+        "gateway" : "172.17.101.253",
+        "subnetMask" : "255.255.255.0"
+        }    
+    }],
+    "vip" : "172.17.101.26",
+    "vipFqdn" : "nsx02.sfo01.rainpole.local",
+    "licenseKey" : "DH6C7-MNH9H-D8RD0-0H8R6-A95NJ",
+    "nsxManagerAdminPassword" : "VMware1!VMware1!",
+    "formFactor" : "large"
+  }
+}

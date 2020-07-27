@@ -1,0 +1,20 @@
+---
+- name: Comission hosts, this will take 2-5 minutes, sleeping .....
+  uri:
+    validate_certs: False
+    url: "https://{{ sddc_fqdn }}/v1/hosts"
+    method: POST
+    src: host.json
+    return_content: yes
+    status_code: [200, 202, 400]
+    headers:
+      Authorization: "Bearer {{ sddc_session_token }}"
+      Content-Type: "application/json"
+  register: sddc_add_hosts
+
+- name: Add Host Log
+  debug:
+    msg: "{{ sddc_add_hosts.json }}"
+
+
+...

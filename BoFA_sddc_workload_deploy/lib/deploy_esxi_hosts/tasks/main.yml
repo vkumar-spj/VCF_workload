@@ -1,0 +1,29 @@
+---
+# tasks file for workload_deploy
+
+- name: Get Hosts Current hosts deployed
+  import_tasks: get_hosts.yml
+
+- name: Validate Hosts, this will wait for 45 seconds after sending JSON file for validation 
+  import_tasks: validate_hosts.yml
+
+- name: Sleep for 300 seconds and continue with play
+  wait_for:
+    delay: 45
+    timeout: 0
+
+- name:  Validation results
+  import_tasks: check_validation_host_status.yml
+
+- name: Comission hosts, this will take 2-5 minutes, sleeping .....
+  import_tasks: add_hosts.yml
+
+
+- name: Sleep for 300 seconds and continue with play
+  wait_for:
+    delay: 45
+    timeout: 0
+
+- name: Get all host and their IDs, use these IDs in work load domain 
+  import_tasks: get_hosts.yml
+

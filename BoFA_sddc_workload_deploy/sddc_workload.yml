@@ -1,0 +1,16 @@
+- name: Interact with SDDC on VCF to create new workloads. Gets token, submits input JSON file for validation
+  gather_facts: no
+  hosts: localhost
+  strategy: free
+  vars:
+    sddc_admin_username: administrator@vsphere.local
+    sddc_admin_password: VMware1!
+    sddc_fqdn: sddc01.sfo01.rainpole.local
+
+  tasks:
+    - include_role:
+        name: workload_deploy
+
+    - include_role:
+        name: workload_deploy
+

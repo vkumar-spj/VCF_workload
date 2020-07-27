@@ -1,0 +1,33 @@
+---
+- name: Validate Domain JSON file
+  uri:
+    validate_certs: False
+    url: "https://{{ sddc_fqdn }}/v1/domains/validations/creations"
+    method: POST
+    src: sfo01-w01-domain.json
+    return_content: yes
+    status_code: [200, 202, 400]
+    headers:
+      Authorization: "Bearer {{ sddc_session_token }}"
+      Content-Type: "application/json"
+  register: sddc_validate_domain_status
+
+- name:  Validation results,show if errors in validation
+  debug:
+    msg: "{{ sddc_validate_domain_status | json_query('json.validationChecks.errorResponse[*].{Errorcode:errorCode, message:message}') }}"
+  ignore_errors: yes
+
+- name: Store validation results
+  set_fact:
+    sddc_validation_final_result: "{{ sddc_validate_domain_status | json_query('json.validationChecks[*].resultStatus') }}"
+
+- name:  Validation results,show if errors in validation
+  debug:
+    msg: "{{ sddc_validate_domain_status | json_query('json.validationChecks') }}"
+  ignore_errors: yes
+
+- name:  Print  value of domain validation result
+  debug:
+    msg: "{{ sddc_validation_final_result }}"
+  ignore_errors: yes
+

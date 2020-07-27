@@ -1,0 +1,15 @@
+- name: Get SDDC token and create network pools
+  gather_facts: no
+  hosts: localhost
+  strategy: free
+  vars:
+    sddc_admin_username: administrator@vsphere.local
+    sddc_admin_password: VMware1!
+    sddc_fqdn: sddc01.sfo01.rainpole.local
+
+  tasks:
+    - include_role:
+        name: get_sddc_token
+    - include_role:
+        name: deploy_network_pool
+

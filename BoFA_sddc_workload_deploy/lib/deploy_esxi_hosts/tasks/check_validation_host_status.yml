@@ -1,0 +1,18 @@
+---
+- name: Valudation status
+  uri:
+    validate_certs: False
+    url: "https://{{ sddc_fqdn }}/v1/hosts/validations/{{ sddc_valudate_id }}"
+    method: GET
+    return_content: yes
+    status_code: [200, 400]
+    headers:
+      Authorization: "Bearer {{ sddc_session_token }}"
+      Content-Type: "application/json"
+  register: sddc_validate_hosts
+
+- name: Valudation status
+  debug:
+    msg: "{{ sddc_validate_hosts.json }}"
+
+...

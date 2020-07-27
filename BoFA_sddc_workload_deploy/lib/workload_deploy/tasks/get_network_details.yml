@@ -1,0 +1,17 @@
+---
+- name: Get Network Pools configured on SDDC
+  uri:
+    validate_certs: false
+    url: "https://{{ sddc_fqdn }}/v1/network-pools/{{ item }}"
+    method: GET
+    return_content: yes
+    status_code: [200, 500]
+    headers:
+      Authorization: "Bearer {{ sddc_session_token }}"
+      Content-Type: "application/json"
+  register: sddc_network_pools
+  loop:
+    - "9457c6bb-b428-450b-b36e-b08bee957348"
+#    - "50ac6049-df60-4777-822d-eee0550fe332"
+
+...

@@ -1,0 +1,15 @@
+---
+- name: Get SDDC API token
+  uri:
+    validate_certs: false
+    url: "https://{{ sddc_fqdn }}/v1/tokens"
+    method: POST
+    body: '{ "username": "{{ sddc_admin_username }}", "password": "{{ sddc_admin_password }}" }'
+    return_content: yes
+    status_code: 200
+    body_format: json
+    headers:
+      Content-Type: "application/json"
+  register: sddc_token_results
+
+...

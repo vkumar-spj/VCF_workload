@@ -1,0 +1,16 @@
+- name: Retreive Token, validate list of hosts, deploy hosts into SDDC( Network pool creation is requirement) 
+  gather_facts: no
+  hosts: localhost
+  strategy: free
+
+  vars:
+    sddc_admin_username: administrator@vsphere.local
+    sddc_admin_password: VMware1!
+    sddc_fqdn: sddc01.sfo01.rainpole.local
+
+  tasks:
+    - include_role:
+        name: get_sddc_token
+    - include_role:
+        name: deploy_esxi_hosts
+
