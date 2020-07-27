@@ -15,8 +15,9 @@ Download the code from Git.Once downloaded, copy workload_
 
 ```bash
 $git clone http://location
-$git clone --depth=1 --branch=master git://bitbucket.org/sddc/xyz tempDir
-$cp roles /etc/ansible/roles
+$git clone --depth=1 --branch=master git://bitbucket.org/sddc/VCF_workload tempDir
+$cp -r tempDir/lib/* /etc/ansible/roles
+
 
 
 ```
@@ -108,7 +109,7 @@ $cat network-json.json
 }
 
 # Once this file is available in roles seciton, then the playbook to deploy network is invoked using the following.   use -vvv option to turn on debugging
-$ansible-playbook deploy_networks.yml 
+$ansible-playbook sddc_deploynetwork_pool.yml
 
 ```
 
